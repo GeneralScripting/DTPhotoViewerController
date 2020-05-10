@@ -127,11 +127,13 @@ public class DTPhotoAnimator: NSObject, DTPhotoViewerBaseAnimator {
             }
             
             photoViewerController.imageView.backgroundColor = .clear
+            photoViewerController.imageView.clipsToBounds = true
             
             let animation = {
                 photoViewerController.dismissingAnimation()
                 
                 if let referencedView = photoViewerController.referencedView {
+                    photoViewerController.imageView.contentMode = referencedView.contentMode
                     photoViewerController.imageView.layer.cornerRadius = referencedView.layer.cornerRadius
                     photoViewerController.imageView.backgroundColor = referencedView.backgroundColor
                 }
